@@ -29,11 +29,19 @@ export class UsersController {
     };
   }
 
-  @Put('/update')
+  @Put('/update/:id')
   @HttpCode(HttpStatus.OK)
-  updateUsers(@Param() id: string, @Body() createUsers: CreateUsersDTO) {
+  updateUsers(@Param('id') id: string, @Body() createUsers: CreateUsersDTO) {
     return {
       message: 'update user',
+    };
+  }
+
+  @Delete('/delete/:id')
+  @HttpCode(HttpStatus.OK)
+  deleteUsers(@Param('id') id: string) {
+    return {
+      message: 'eliminando usuario',
     };
   }
 }
