@@ -54,7 +54,7 @@ export class ProductController {
     });
   }
 
-  @Put('/update(:productID')
+  @Put('/update/:productID')
   async updateProduct(
     @Res() res,
     @Param('productID') productID: string,
