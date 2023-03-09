@@ -26,4 +26,14 @@ export class UsersService {
     );
     return userUpdate;
   }
+
+  async delete(userID: string): Promise<USER> {
+    const userDelete = await this.usersModel.findByIdAndDelete(userID);
+    return userDelete;
+  }
+
+  async findById(userID: string): Promise<USER> {
+    const user = await this.usersModel.findById(userID);
+    return user;
+  }
 }
