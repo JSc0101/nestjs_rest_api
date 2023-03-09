@@ -10,23 +10,21 @@ import {
   HttpCode,
 } from '@nestjs/common';
 import { CreateUsersDTO } from './Dto/users.dto';
+import { UsersService } from './users.service';
 
 @Controller('users')
 export class UsersController {
+  constructor(private createUserDTO: UsersService) {}
   @Get()
   @HttpCode(HttpStatus.OK)
-  getUsers() {
-    return {
-      message: 'users',
-    };
+  async getUsers() {
+    return await this.createUserDTO.gets();
   }
 
   @Post('/create')
   @HttpCode(HttpStatus.OK)
-  createUsers(@Body() createUsers: CreateUsersDTO) {
-    return {
-      message: 'guardando user',
-    };
+  async createUsers(@Body() createUsers: CreateUsersDTO) {
+    return await this.createUserDTO.create(createUsers);
   }
 
   @Put('/update/:id')

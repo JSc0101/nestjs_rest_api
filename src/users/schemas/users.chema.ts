@@ -12,4 +12,3 @@ export const UserSchema = new Schema({
   },
   rol: String,
 });
-
