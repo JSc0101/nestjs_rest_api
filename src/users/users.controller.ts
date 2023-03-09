@@ -29,10 +29,11 @@ export class UsersController {
 
   @Put('/update/:id')
   @HttpCode(HttpStatus.OK)
-  updateUsers(@Param('id') id: string, @Body() createUsers: CreateUsersDTO) {
-    return {
-      message: 'update user',
-    };
+  async updateUsers(
+    @Param('id') id: string,
+    @Body() createUsers: CreateUsersDTO,
+  ) {
+    return await this.createUserDTO.update(id, createUsers);
   }
 
   @Delete('/delete/:id')
