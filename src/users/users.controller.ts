@@ -38,9 +38,13 @@ export class UsersController {
 
   @Delete('/delete/:id')
   @HttpCode(HttpStatus.OK)
-  deleteUsers(@Param('id') id: string) {
-    return {
-      message: 'eliminando usuario',
-    };
+  async deleteUsers(@Param('id') id: string) {
+    return await this.createUserDTO.delete(id);
+  }
+
+  @Get(':id')
+  @HttpCode(HttpStatus.OK)
+  async findId(@Param('id') id: string) {
+    return await this.createUserDTO.findById(id);
   }
 }
